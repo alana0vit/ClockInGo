@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:17
+    container_name: clock_in_go
+    restart: always
+    environment:
+      POSTGRES_USER: clock_in_go_user
+      POSTGRES_PASSWORD: senhaSegura123
+      POSTGRES_DB: clock_in_go_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
