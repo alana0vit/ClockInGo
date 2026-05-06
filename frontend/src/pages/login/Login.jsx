@@ -1,67 +1,52 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../services/api";
-import "./Login.css";
+import api from "../../services/api"
 import { toast } from "react-toastify";
+import "./Login.css";
 
 function Login() {
-    const navigate = useNavigate();
+  const [cpf, setCpf] = useState("");
+  const navigate = useNavigate();
 
-    const [cpf, setCpf] = useState("");
-    const [senha, setSenha] = useState("");
-    const [erro, setErro] = useState("");
-    const [loading, setLoading] = useState(false);
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        setErro("");
-        setLoading(true);
+    try {
+      const response = await api.post("/funcionarios/validar", {
+        cpf,
+      });
 
-        try {
-            const response = await api.post("/auth/login", {
-                cpf,
-                senha,
-            });
+      localStorage.setItem("user", JSON.stringify(response.data));
 
-            localStorage.setItem("token", response.data.token);
+      toast.success("Acesso liberado!");
+      navigate("/dashboard");
 
-            toast.success("Login realizado!");
-            navigate("/dashboard");
+    } catch (err) {
+      toast.error("CPF não encontrado");
+    }
+  };
 
-        } catch (err) {
-            toast.error("Erro ao fazer login");
-        }
-    };
+  return (
+    <div className="login-container">
+      <form className="login-box" onSubmit={handleLogin}>
+        <h2>ClockInGo</h2>
 
-    return (
-        <div className="login-container">
-            <form className="login-box" onSubmit={handleLogin}>
-                <h2>ClockInGo</h2>
+        <input
+          type="text"
+          placeholder="Digite seu CPF"
+          value={cpf}
+          onChange={(e) => setCpf(e.target.value)}
+          required
+        />
 
-                <input
-                    type="text"
-                    placeholder="CPF"
-                    value={cpf}
-                    onChange={(e) => setCpf(e.target.value)}
-                    required
-                />
+        <button type="submit">Entrar</button>
 
-                <input
-                    type="password"
-                    placeholder="Senha"
-                    value={senha}
-                    onChange={(e) => setSenha(e.target.value)}
-                    required
-                />
-
-                {erro && <p className="erro">{erro}</p>}
-
-                <button type="submit" disabled={loading}>
-                    {loading ? "Entrando..." : "Entrar"}
-                </button>
-            </form>
-        </div>
-    );
+        <p className="helper-text">
+          Use seu CPF cadastrado para acessar
+        </p>
+      </form>
+    </div>
+  );
 }
 
 export default Login;
