@@ -11,7 +11,7 @@ async function start() {
       console.log(`Servidor rodando em http://localhost:${PORT}`);
     });
   } catch (err) {
-    console.error("Falha ao iniciar o servidor:", error);
+    console.error("Falha ao iniciar o servidor:", err);
     process.exit(1);
   }
 }
