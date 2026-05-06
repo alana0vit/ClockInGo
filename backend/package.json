@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "echo test ok",
+    "test": "jest",
     "lint": "echo lint ok"
   },
   "keywords": [],
@@ -20,6 +20,7 @@
     "sequelize": "^6.37.8"
   },
   "devDependencies": {
-    "eslint": "^10.3.0"
+    "eslint": "^10.3.0",
+    "jest": "^30.3.0"
   }
 }
