@@ -16,14 +16,6 @@ function Header() {
             </div>
 
             <nav className="nav">
-                <button onClick={() => navigate("/historico")}>
-                    Histórico
-                </button>
-
-                <button onClick={() => navigate("/perfil")}>
-                    Perfil
-                </button>
-
                 <button className="logout" onClick={handleLogout}>
                     Logout
                 </button>
