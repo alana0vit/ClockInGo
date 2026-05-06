@@ -1,5 +1,5 @@
-const { types } = require("pg");
 const {DataTypes, Model} = require("sequelize");
+const sequelize = require("../config/database");
 
 class Escala extends Model {}
 
