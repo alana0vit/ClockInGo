@@ -37,3 +37,5 @@ Funcionario.init(
     tableName: "funcionarios",
   },
 );
+
+module.exports = Funcionario;

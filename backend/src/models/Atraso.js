@@ -31,3 +31,5 @@ Atraso.init(
     underscored: true,
   },
 );
+
+module.exports = Atraso;
