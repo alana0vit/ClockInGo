@@ -1,10 +1,16 @@
-const { Funcionario } = require("../models");
+const { Funcionario, Departamento } = require("../models");
 
 async function login(cpf) {
     // Busca o funcionário pelo CPF
     const funcionario = await Funcionario.findOne({
         where: { cpf },
-        attributes: ['id', 'nome', 'cpf', 'email'], // só retorna esses campos
+        attributes: ['id', 'nome', 'cpf', 'email'],
+        include: [
+            {
+                model: Departamento,
+                attributes: ["nome", "sigla"],
+            },
+        ],
     });
 
     if (!funcionario) {

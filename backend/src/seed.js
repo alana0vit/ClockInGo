@@ -1,36 +1,32 @@
-const { sequelize, Departamento, Funcionario } = require('./models');
+const sequelize = require("./config/database");
 
-async function seed() {
+const seedEscalas = require("./seeders/escalaSeeder");
+const seedDepartamentos = require("./seeders/departamentoSeeder");
+const seedFuncionarios = require("./seeders/funcionarioSeeder");
 
-  await sequelize.sync({ force: true });
+async function executarSeeds() {
 
-  const ti = await Departamento.create({
-    nome: 'Tecnologia da Informação',
-    sigla: 'TI'
-  });
+    try {
 
-  const rh = await Departamento.create({
-    nome: 'Recursos Humanos',
-    sigla: 'RH'
-  });
+        await sequelize.authenticate();
 
-  await Funcionario.create({
-    nome: 'Brenda Silva',
-    email: 'brenda@clockingo.com',
-    cpf: '12345678900',
-    departamentoId: ti.id
-  });
+        console.log("Banco conectado");
 
-  await Funcionario.create({
-    nome: 'Carlos Souza',
-    email: 'carlos@clockingo.com',
-    cpf: '98765432100',
-    departamentoId: rh.id
-  });
+        await seedEscalas();
+        await seedDepartamentos();
+        await seedFuncionarios();
 
-  console.log('Seed executado!');
+        console.log("Seeds executados com sucesso");
 
-  process.exit();
+        process.exit();
+
+    } catch (erro) {
+
+        console.error("Erro ao executar seeds:", erro);
+
+        process.exit(1);
+
+    }
 }
 
-seed();
+executarSeeds();

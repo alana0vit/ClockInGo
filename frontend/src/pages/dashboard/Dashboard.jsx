@@ -71,7 +71,7 @@ function Dashboard() {
             <main className="dashboard-container">
                 <div className="dashboard-card">
                     <h1>Olá, {user?.nome}</h1>
-                    <h3 className="departamento">{user?.departamento}</h3>
+                    <h3 className="departamento">{user?.Departamento?.nome}</h3>
 
                     <div className="relogio">
                         <p>{formatarData(dataHora)}</p>
