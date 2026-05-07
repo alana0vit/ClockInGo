@@ -1,0 +1,85 @@
+.ajuste-container {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    background: #081225;
+}
+
+.ajuste-card {
+    width: 100%;
+    max-width: 900px;
+    background: #334766;
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+}
+
+.ajuste-card h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    text-align: center;
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+.lista-atrasos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.atraso-item {
+    background: #253552;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.info-atraso h3 {
+    margin-bottom: 8px;
+}
+
+.status-ok {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.status-pendente {
+    color: #f1c40f;
+    font-weight: bold;
+}
+
+.justificativa-box {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.justificativa-box textarea {
+    min-height: 100px;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    resize: none;
+    font-size: 15px;
+}
+
+.justificativa-box button {
+    background: #1fb14e;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.justificativa-box button:hover {
+    opacity: 0.9;
+}

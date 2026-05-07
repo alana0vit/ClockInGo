@@ -16,7 +16,7 @@ function Login() {
         cpf,
       });
 
-      localStorage.setItem("user", JSON.stringify(response.data));
+      localStorage.setItem("user", JSON.stringify(response.data.funcionario));
 
       toast.success("Acesso liberado!");
       navigate("/dashboard");
