@@ -11,7 +11,7 @@ const sequelize = new Sequelize(
         dialect: env.db.dialect,
         logging: env.nodeEnv === "development" ? console.log : false,
         define: {
-            userscored: true,
+            underscored: true,
             timestamps: true, 
         },
         pool: {

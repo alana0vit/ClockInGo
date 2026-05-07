@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test": "NODE_ENV=test jest",
+    "test:watch": "NODE_ENV=test jest --watch",
+    "test:coverage": "NODE_ENV=test jest --coverage",
     "lint": "echo lint ok"
   },
   "keywords": [],
@@ -15,7 +15,6 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "pg": "^8.20.0",
@@ -24,7 +23,6 @@
   },
   "devDependencies": {
     "eslint": "^10.3.0",
-    "jest": "^30.3.0",
-    "supertest": "^7.2.2"
+    "jest": "^30.3.0"
   }
 }
