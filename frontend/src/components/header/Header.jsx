@@ -16,6 +16,11 @@ function Header() {
             </div>
 
             <nav className="nav">
+
+                <button onClick={() => navigate("/ponto-ajuste")}>
+                    Justificar Ponto
+                </button>
+
                 <button className="logout" onClick={handleLogout}>
                     Logout
                 </button>
