@@ -12,7 +12,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await api.post("/funcionarios/validar", {
+      const response = await api.post("/api/auth/login", {
         cpf,
       });
 
