@@ -1,12 +1,14 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-// Importar as rotas
-const funcionarioRoutes = require("./funcionarioRoutes");
-const authRoutes = require("./authRoutes");
+// Importar rotas
+const funcionarioRoutes = require('./funcionarioRoutes');
+const authRoutes = require('./authRoutes');
+const pontoRoutes = require('./pontoRoutes');
 
-// Registrar de rotas
-router.use("/funcionarios", funcionarioRoutes);
-router.use("/auth", authRoutes);
+// Registrar rotas
+router.use('/funcionarios', funcionarioRoutes);
+router.use('/auth', authRoutes);
+router.use('/ponto', pontoRoutes);
 
 module.exports = router;
