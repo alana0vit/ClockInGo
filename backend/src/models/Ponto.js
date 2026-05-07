@@ -1,7 +1,7 @@
 const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../config/database");
 
-class Ponto extends Model {}
+class Ponto extends Model { }
 
 Ponto.init(
   {
@@ -21,6 +21,10 @@ Ponto.init(
     observacao: {
       type: DataTypes.STRING,
       allowNull: true, // Caso o RH insira algo
+    },
+    funcionario_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
   },
   {

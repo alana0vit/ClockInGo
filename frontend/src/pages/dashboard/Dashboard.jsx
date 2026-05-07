@@ -9,6 +9,7 @@ function Dashboard() {
 
     const [dataHora, setDataHora] = useState(new Date());
     const [loading, setLoading] = useState(false);
+    const [tipoRegistro, setTipoRegistro] = useState("entrada");
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -30,15 +31,34 @@ function Dashboard() {
         setLoading(true);
 
         try {
-            await api.post("/pontos", {
-                nome: user.nome,
-                data: formatarData(dataHora),
-                hora: formatarHora(dataHora),
+
+            const rota =
+                tipoRegistro === "entrada"
+                    ? "/api/ponto/entrada"
+                    : "/api/ponto/saida";
+
+            await api.post(rota, {
+                cpf: user.cpf,
             });
 
-            toast.success("Ponto registrado com sucesso!");
+            toast.success(
+                `${tipoRegistro === "entrada" ? "Entrada" : "Saída"} registrada com sucesso!`
+            );
+
+            // alterna automaticamente
+            setTipoRegistro(
+                tipoRegistro === "entrada"
+                    ? "saida"
+                    : "entrada"
+            );
+
         } catch (err) {
-            toast.error("Erro ao registrar ponto");
+
+            const mensagem =
+                err.response?.data?.erro || "Erro ao registrar ponto";
+
+            toast.error(mensagem);
+
         } finally {
             setLoading(false);
         }
@@ -63,7 +83,13 @@ function Dashboard() {
                         onClick={handleBaterPonto}
                         disabled={loading}
                     >
-                        {loading ? "Registrando..." : "Bater Ponto"}
+                        {
+                            loading
+                                ? "Registrando..."
+                                : tipoRegistro === "entrada"
+                                    ? "Registrar Entrada"
+                                    : "Registrar Saída"
+                        }
                     </button>
                 </div>
             </main>
