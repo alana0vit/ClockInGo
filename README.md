@@ -25,6 +25,8 @@ O sistema possui funcionalidades simples para permitir foco nas práticas DevOps
 * Login
 * Home do usuário
 * Registro de ponto
+* Ajuste de ponto
+* Escala
 
 ---
 
