@@ -13,8 +13,8 @@ Departamento.belongsTo(Escala, { foreignKey: "escala_id" });
 Escala.hasMany(Funcionario, { foreignKey: "escala_id" });
 Funcionario.belongsTo(Escala, { foreignKey: "escala_id" });
 
-Departamento.hasMany(Funcionario, { foreignKey: "departamento_id" });
-Funcionario.belongsTo(Departamento, { foreignKey: "departamento_id" });
+Departamento.hasMany(Funcionario, { foreignKey: "departamentoId" });
+Funcionario.belongsTo(Departamento, { foreignKey: "departamentoId" });
 
 Funcionario.hasMany(Ponto, { foreignKey: "funcionario_id" });
 Ponto.belongsTo(Funcionario, { foreignKey: "funcionario_id" });

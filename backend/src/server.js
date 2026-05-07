@@ -7,6 +7,7 @@ const PORT = env.port || 3000;
 async function start() {
   try {
     await sequelize.authenticate();
+    await sequelize.sync({alter:true});
     app.listen(PORT, () => {
       console.log(`Servidor rodando em http://localhost:${PORT}`);
     });
